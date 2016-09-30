@@ -16,12 +16,28 @@ var GroceryList = (props) => (
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      done: false
+    };
   }
 
+    onListItemClick() {
+      this.setState({
+        done: !this.state.done
+      });
+    }
+
   render() {
+
+    var style = {
+      textDecoration: this.state.done ? 'line-through' : 'none'
+    };
+
     return (
-      <li>{this.props.item}</li>
-      );
+      <li style={style} onClick={this.onListItemClick.bind(this)}>
+        {this.props.item}</li>
+    );
   }
 }
 
